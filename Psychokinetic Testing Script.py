@@ -12,9 +12,13 @@ ordering = []
 chose = 0;
 secureRand = random.SystemRandom()
 
-control = []
-for x in range(0,10000):
-    control.append(secureRand.randint(0,1000000))
+control1 = []
+for x in range(0,5000):
+    control1.append(secureRand.randint(0,1000000))
+control2 = []
+for x in range(0,5000):
+    control2.append(secureRand.randint(0,1000000))
+
 
 def testing(x):
     global ordering
@@ -79,7 +83,7 @@ for j in range(1,5):
     print(ordering[j-1])
     time.sleep(3)
     wheelState = 0
-    wheel = ["\\","|","/","-"]
+    wheel = ["\\","|","/","--"]
     for k in range(0,5000):
         results.append(secureRand.randint(0,1000000))
         elapsed = ((time.time_ns() // 1_000_000) - start_time) % 500
@@ -105,7 +109,8 @@ data = {
     ordering[1]: trial2,
     ordering[2]: trial3,
     ordering[3]: trial4,
-    "Control": control
+    "Control1": control1,
+    "Control2": control2
 }
 
 df = pd.DataFrame(data)
